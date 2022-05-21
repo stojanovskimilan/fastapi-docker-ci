@@ -73,13 +73,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the FastAPI Docker image
-      run: docker build -t '${{secrets.DOCKER_LOGIN}}'/ctse-lab-12:'${{github.sha}}' .
+      run: docker build -t '${{secrets.DOCKER_LOGIN}}'/fastapi-docker-workflow:'${{github.sha}}' .
       
     - name: Login to docker
       run: docker login --username '${{secrets.DOCKER_LOGIN}}' --password '${{secrets.DOCKER_PASSWORD}}'
 
     - name: Push the docker image
-      run: docker push '${{secrets.DOCKER_LOGIN}}'/ctse-lab-12:'${{github.sha}}'
+      run: docker push '${{secrets.DOCKER_LOGIN}}'/fastapi-docker-workflow:'${{github.sha}}'
 ```
 ⚠️ Add the `DOCKER_LOGIN` and `DOCKER_PASSWORD` to the github repository secrets.
 
