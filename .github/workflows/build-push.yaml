@@ -7,10 +7,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build the FastAPI Docker image
-      run: docker build -t '${{secrets.DOCKER_USERNAME}}'/fastapi-docker-workflow:'${{github.sha}}' .
     - name: Debug Secrets (Temporary)
       run: echo "DOCKER_USERNAME is '${{ secrets.DOCKER_USERNAME }}'"
+      
+    - name: Build the FastAPI Docker image
+      run: docker build -t '${{secrets.DOCKER_USERNAME}}'/fastapi-docker-workflow:'${{github.sha}}' .
 
     - name: Login to docker
       run: docker login --username '${{secrets.DOCKER_USERNAME}}' --password '${{secrets.DOCKER_PASSWORD}}'
